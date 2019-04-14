@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "VPC"
+
+Parameters:
+  CidrBlock:
+    Type: String
+
+  EnableDnsHostnames:
+    Type: String
+
+  EnableDnsSupport:
+    Type: String
+
+  InstanceTenancy:
+    Type: String
+
+Resources:
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: { Ref: CidrBlock }
+      EnableDnsHostnames: { Ref: EnableDnsHostnames }
+      EnableDnsSupport: { Ref: EnableDnsSupport }
+      InstanceTenancy: { Ref: InstanceTenancy }
+
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: { Ref: InternetGateway }
+      VpcId: { Ref: VPC }
+
+Outputs:
+  InternetGatewayId:
+    Description: "Internet Gateway Id"
+    Export:
+      Name:
+        Fn::Sub: ${AWS::StackName}-internet::gateway::id
+    Value: { Ref: InternetGateway }
+
+  VPCId:
+    Description: "VPC Id"
+    Value: { Ref: VPC }
+    Export:
+      Name:
+Fn::Sub: ${AWS::StackName}-vpc::id
