@@ -1,4 +1,4 @@
- name: cloudformation - ec2 - network-acl
+- name: cloudformation - ec2 - network-acl
   cloudformation:
     stack_name: "{{ network_acl.stack_name }}"
     state: "present"
