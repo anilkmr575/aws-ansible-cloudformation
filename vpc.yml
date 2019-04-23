@@ -7,7 +7,7 @@
   
   roles:
     - common/ec2/vpc
-    - common/ec2/network-acl
+   // - common/ec2/network-acl
     - { role: common/ec2/route-table, route_table_items: "{{ route_table_public }}" }
     - { role: common/ec2/subnet, subnet_items: "{{ subnet_public }}" }
     - { role: common/ec2/route-table, route_table_items: "{{ route_table_private }}" }
