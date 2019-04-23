@@ -14,4 +14,4 @@
       RuleActionIngress: "{{ network_acl.rule_action_ingress }}"
       RuleNumberEgress: "{{ network_acl.rule_number_egress }}"
       RuleNumberIngress: "{{ network_acl.rule_number_ingress }}"
-VpcStackName: "{{ network_acl.vpc_stack_name }}"
+      VpcStackName: "{{ network_acl.vpc_stack_name }}"
